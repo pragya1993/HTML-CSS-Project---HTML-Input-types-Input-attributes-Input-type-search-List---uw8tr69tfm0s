@@ -1,17 +1,17 @@
-const codes = document.querySelectorAll('.code');
+const content = document.querySelectorAll('.content');
+const listItem = document.querySelectorAll('nav ul li');
 
-codes[0].focus()
-
-codes.forEach((code, idx) => {
-    code.addEventListener('keydown', (e) => {
-        if(e.key >= 0 && e.key <=9){
-            codes[idx].value =''
-            setTimeout(() => codes[idx + 1].focus(), 10) 
-        }else if(e.key === 'Backspace'){
-            setTimeout(() => codes[idx - 1].focus(), 10)
-        }
-    })
-})
-
-
-
+listItem.forEach((item,index)=>{
+         item.addEventListener('click',()=>{
+                hideAllContents();
+                hideAllItems();
+                item.classList.add('active');
+                content[index].classList.add('show');
+         });
+});
+function hideAllContents(){
+    content.forEach(content =>content.classList.remove('show'));
+}
+function hideAllItems(){
+    listItem.forEach(item =>item.classList.remove('active'));
+}
